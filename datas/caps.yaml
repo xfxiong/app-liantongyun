@@ -1,0 +1,11 @@
+desirecaps:
+  platformName: "Android"
+  platformVersion: "7.1"
+  deviceName: "VOG-AL00"
+  appPackage: 'com.hcloud.wocom'
+  appActivity: 'com.hcloud.pan.ui.activity.login.LoginNewActivity'
+  noReset: "False"
+  unicodeKeyboard: "True"
+  resetKeyboard: "True"
+
+

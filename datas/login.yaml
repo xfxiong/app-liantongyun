@@ -1,0 +1,20 @@
+login001:
+  username: "18000000310"
+  pwd: "Abc1234@"
+  expect: "我的"
+  success: true
+login002:
+  username: ""
+  pwd: "Abc1234@"
+  expect: "请输入正确的11位手机号"
+  success: false
+login003:
+  username: "18000000310"
+  pwd: "Abc123"
+  expect: "密码错误，请重新输入"
+  success: false
+login004:
+  username: "18000000310"
+  pwd: ""
+  expect: "请输入登录密码"
+  success: false
