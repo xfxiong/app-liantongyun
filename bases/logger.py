@@ -1,4 +1,5 @@
 import logging.handlers
+import time
 
 
 class GetLogger:
@@ -15,7 +16,8 @@ class GetLogger:
             # 获取处理器 控制台
             sh = logging.StreamHandler()
             # 获取处理器 文件
-            th = logging.handlers.TimedRotatingFileHandler(filename="../log/log01.log",
+            file_name = "../log/log-{}.log".format(time.strftime("%Y_%m_%d %H_%M_%S"))
+            th = logging.handlers.TimedRotatingFileHandler(filename=file_name,
                                                            when="midnight", interval=1, backupCount=30,
                                                            encoding="utf-8")
             # 获取格式器

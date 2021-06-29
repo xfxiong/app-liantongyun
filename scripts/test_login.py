@@ -3,6 +3,7 @@ import pytest
 from bases.app import App
 from bases.logger import GetLogger
 from page.login_page import LoginPage
+from tools.read_yaml import get_login_data
 
 log = GetLogger().get_logger()
 
@@ -21,11 +22,18 @@ class Test_Login():
     def teardown_class(self):
         App.close_app()
 
-    @allure.story("密码登录")
-    @pytest.mark.parametrize("username,pwd,success,expect",
-                             [("18000000001", "Abc1234@", True, "登录成功"), ("", "Abc1234@", False, "请输入正确的11位手机号"),
-                              ("18000000001", "", False, "请输入登录密码")])
-    def test_login(self, username, pwd, success, expect):
+    @allure.feature("功能模块")
+    @allure.story("密码登录页面")
+    @allure.title("登录页面-{title}")
+    # @allure.description("密码登录，输入账号，输入密码，点击登录")
+    @allure.step("1.点击密码登录  2.输入账号，输入密码，点击登录")
+    @pytest.mark.parametrize("username,pwd,expect,success,title", get_login_data())
+    def test_login(self, username, pwd, success, expect, title):
+        '''
+        用例描述：
+        前提：已有账号
+        步骤：1.点击密码登录  2.输入账号，输入密码，点击登录
+        '''
         self.login.login(username, pwd)
         if success:
             try:
@@ -33,9 +41,10 @@ class Test_Login():
             except Exception as e:
                 log.error(e)
                 self.login.screenshot()
-            self.login.goto_my()
-            self.login.goto_setting()
-            self.login.logout()
+            with allure.step("退出登录：点击我的，点击设置，点击退出登录"):
+                self.login.goto_my()
+                self.login.goto_setting()
+                self.login.logout()
             try:
                 assert self.login.logout_if_success()
             except Exception as e:

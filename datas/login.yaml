@@ -3,18 +3,22 @@ login001:
   pwd: "Abc1234@"
   expect: "我的"
   success: true
+  title: "正确的账号和正确的密码登录"
 login002:
   username: ""
   pwd: "Abc1234@"
   expect: "请输入正确的11位手机号"
   success: false
+  title: "不输入账号和正确的密码登录"
 login003:
   username: "18000000310"
   pwd: "Abc123"
   expect: "密码错误，请重新输入"
   success: false
+  title: "正确的账号和错误的密码登录"
 login004:
   username: "18000000310"
   pwd: ""
   expect: "请输入登录密码"
   success: false
+  title: "正确的账号和不输入密码登录"

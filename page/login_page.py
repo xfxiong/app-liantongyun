@@ -38,10 +38,10 @@ class LoginPage(Base):
         if self.element_is_exist(page.error_txt):
             return self.find_element(page.error_txt).text
         else:
-            return self.driver.find_element_by_xpath(f"// *[contains(@text,'{toast}')]").text
+            return self.driver.find_element_by_xpath(f"//*[contains(@text,'{toast}')]").text
 
     def screenshot(self):
-        self.driver.get_screenshot_as_file("/image/{}".format(time.strftime("%Y_%m_%d %H_%M_%S")))
+        self.driver.get_screenshot_as_file("../image/{}.png".format(time.strftime("%Y_%m_%d %H_%M_%S")))
 
     def login_if_success(self):
         return self.element_is_exist(page.my_btn)

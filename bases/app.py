@@ -1,14 +1,12 @@
 import yaml
 from appium import webdriver
 
-with open("../datas/caps.yaml") as f:
+with open(r"D:\soft\pycharm\liantongapp\datas\caps.yaml") as f:
     myconfig = yaml.safe_load(f)
     desired_caps = myconfig['desirecaps']
 
-
 class App:
     driver = None
-
     def __init__(self, driver):
         self.driver = driver
 
@@ -25,8 +23,4 @@ class App:
             cls.driver.quit()
         cls.driver = None
 
-    def restart(self):
-        pass
 
-    def stop(self):
-        pass

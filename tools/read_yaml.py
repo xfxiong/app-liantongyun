@@ -8,7 +8,12 @@ def read_yaml(filename):
     return data
 
 
-arrs = []
-for i in read_yaml("login.yaml").values():
-    arrs.append(i)
-    print(arrs)
+# 登录
+def get_login_data():
+    arrs = []
+    for i in read_yaml("login.yaml").values():
+        arrs.append((i['username'], i['pwd'], i['expect'], i['success'], i['title']))
+    return arrs
+
+
+print(get_login_data())
